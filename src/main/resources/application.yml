@@ -1,0 +1,17 @@
+#SPRING
+spring:
+  #DATABASE
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5060/guilleappdb
+    username: guilleappdb
+    password: Guille201
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true
+    hibernate:
+      ddl-auto: create
+  #LOGS
+  output:
+    ansi:
+      enabled: ALWAYS
