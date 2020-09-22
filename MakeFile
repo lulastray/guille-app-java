@@ -1,0 +1,2 @@
+start-db:
+	@docker run --rm -d -p 5060:5432 -e POSTGRES_DB=guilleappdb -e POSTGRES_USER=guilleappdb -e POSTGRES_PASSWORD=Guille201 --name guille postgres:12-alpine

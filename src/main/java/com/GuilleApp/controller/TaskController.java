@@ -1,7 +1,8 @@
 package com.GuilleApp.controller;
 
 import com.GuilleApp.model.tasks.Task;
-import com.GuilleApp.service.TaskService;
+import com.GuilleApp.service.tasks.TaskService;
+import com.GuilleApp.service.tasks.TaskServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,6 +28,9 @@ public class TaskController {
 
     @DeleteMapping("/{id}")
     public void delete(@PathVariable String id) { taskService.delete(id);}
+
+    @PutMapping("/progress/change")
+    public void update(@RequestBody ChangeProgressDTO changeProgressDTO) { taskService.changeTaskProgress(changeProgressDTO);}
 
 
 }

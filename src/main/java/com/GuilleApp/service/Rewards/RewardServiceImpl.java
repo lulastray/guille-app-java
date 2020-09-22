@@ -1,4 +1,4 @@
-package com.GuilleApp.service;
+package com.GuilleApp.service.Rewards;
 
 import com.GuilleApp.model.rewards.Reward;
 import com.GuilleApp.repository.RewardRepository;
@@ -10,7 +10,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Service
-public class RewardService {
+public class RewardServiceImpl implements RewardService{
 
     @Autowired
     private RewardRepository rewardRepository;

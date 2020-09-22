@@ -26,9 +26,20 @@ public class Task implements Serializable {
     @Column(name="task_progress")
     private TaskProgress taskProgress;
 
+    @NotNull
+    private Long value;
+
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="user_id")
     private AppUser user;
+
+    public Long getValue() {
+        return value;
+    }
+
+    public void setValue(Long value) {
+        this.value = value;
+    }
 
     public static long getSerialVersionUID() {
         return serialVersionUID;

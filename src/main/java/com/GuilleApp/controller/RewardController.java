@@ -1,7 +1,7 @@
 package com.GuilleApp.controller;
 
 import com.GuilleApp.model.rewards.Reward;
-import com.GuilleApp.service.RewardService;
+import com.GuilleApp.service.Rewards.RewardServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,7 +12,7 @@ import java.util.List;
 public class RewardController {
 
     @Autowired
-    private RewardService rewardService;
+    private RewardServiceImpl rewardService;
 
     @GetMapping("/all")
     public List<Reward> getAll(){ return rewardService.findAll();}
