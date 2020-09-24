@@ -37,6 +37,7 @@ public class SecurityUtils {
         return auth() != null ? auth().getAuthorities() : null;
     }
 
+
     public String getUsername() {
         return auth() != null ? auth().getName() : null;
     }
@@ -44,5 +45,7 @@ public class SecurityUtils {
     private Authentication auth() {
         return SecurityContextHolder.getContext().getAuthentication();
     }
+
+
 }
 

@@ -41,10 +41,6 @@ public class Task implements Serializable {
         this.value = value;
     }
 
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
-    }
-
     public AppUser getUser() {
         return user;
     }
@@ -84,4 +80,10 @@ public class Task implements Serializable {
     public void setTaskProgress(TaskProgress taskProgress) {
         this.taskProgress = taskProgress;
     }
+
+    public Boolean isCompleted(){ return taskProgress != null ? taskProgress.equals(TaskProgress.COMPLETED) : false; }
+
+    public Boolean isInProgress(){ return taskProgress != null ? taskProgress.equals(TaskProgress.IN_PROGRESS) : false; }
+
+    public Boolean isDeleted(){ return taskProgress != null ? taskProgress.equals(TaskProgress.DELETED) : false; }
 }

@@ -2,6 +2,7 @@ package com.GuilleApp.service.users;
 
 import com.GuilleApp.model.users.AppUser;
 import com.GuilleApp.repository.UserRepository;
+import com.GuilleApp.security.SecurityUtils;
 import com.GuilleApp.service.exceptions.UserWithoutRoles;
 import com.GuilleApp.service.exceptions.UsernameNotFound;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,9 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private BCryptPasswordEncoder bCrypt;
+
+    @Autowired
+    private SecurityUtils securityUtils;
 
     @Override
     @Transactional(readOnly = true)
@@ -46,5 +50,22 @@ public class UserServiceImpl implements UserService {
     public void create(AppUser user) {
         user.setPassword(bCrypt.encode(user.getPassword()));
         userRepository.save(user);
+    }
+
+    @Override
+    @Transactional
+    public void addPoints(Long taskPoints) {
+        AppUser userLogged = securityUtils.getLoggedInUser();
+        System.out.println("total points " + userLogged.getPoints() + taskPoints);
+        userLogged.setPoints(userLogged.getPoints() + taskPoints);
+        userRepository.save(userLogged);
+    }
+
+    @Override
+    @Transactional
+    public void substractPoints(Long taskPoints) {
+        AppUser userLogged = securityUtils.getLoggedInUser();
+        userLogged.setPoints(userLogged.getPoints() - taskPoints);
+        userRepository.save(userLogged);
     }
 }

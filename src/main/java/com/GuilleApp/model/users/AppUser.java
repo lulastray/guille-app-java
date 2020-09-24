@@ -1,6 +1,5 @@
 package com.GuilleApp.model.users;
 
-import com.GuilleApp.model.points.Points;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -10,7 +9,7 @@ import java.util.List;
 import java.util.UUID;
 
 @Entity
-@Table(name="users")
+@Table(name = "users")
 public class AppUser implements Serializable {
 
     private static final long serialVersionUID = 6332531687788591349L;
@@ -35,15 +34,24 @@ public class AppUser implements Serializable {
     )
     private List<Role> roles;
 
+
+    private Long points;
+
     @PrePersist
     public void prePersist() {
         roles = new ArrayList();
         roles.add(new Role("ROLE_USER"));
+        points = 0L;
+
     }
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "points_id", referencedColumnName = "id")
-    private Points points;
+    public void setPoints(Long points) {
+        this.points = points;
+    }
+
+    public Long getPoints() {
+        return points;
+    }
 
     public static long getSerialVersionUID() {
         return serialVersionUID;
@@ -81,15 +89,9 @@ public class AppUser implements Serializable {
         this.roles = roles;
     }
 
-    public Points getPoints() {
-        return points;
-    }
-
-    public void setPoints(Points points) {
-        this.points = points;
-    }
-
     public boolean hasRoles() {
         return !roles.isEmpty();
     }
+
+
 }
