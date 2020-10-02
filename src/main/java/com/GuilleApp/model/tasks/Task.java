@@ -33,6 +33,18 @@ public class Task implements Serializable {
     @JoinColumn(name="user_id")
     private AppUser user;
 
+    public Task(){
+    }
+
+    public Task(UUID id, String name, String description, TaskProgress taskprogress, long value, AppUser user){
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.taskProgress = taskprogress;
+        this.value = value;
+        this.user = user;
+    }
+
     public Long getValue() {
         return value;
     }

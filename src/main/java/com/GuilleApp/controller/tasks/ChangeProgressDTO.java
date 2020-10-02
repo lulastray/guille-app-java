@@ -1,4 +1,4 @@
-package com.GuilleApp.controller;
+package com.GuilleApp.controller.tasks;
 
 import com.GuilleApp.model.tasks.enums.TaskProgress;
 

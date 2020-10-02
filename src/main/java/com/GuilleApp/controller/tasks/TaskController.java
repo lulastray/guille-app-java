@@ -1,8 +1,8 @@
-package com.GuilleApp.controller;
+package com.GuilleApp.controller.tasks;
 
+import com.GuilleApp.controller.tasks.ChangeProgressDTO;
 import com.GuilleApp.model.tasks.Task;
 import com.GuilleApp.service.tasks.TaskService;
-import com.GuilleApp.service.tasks.TaskServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

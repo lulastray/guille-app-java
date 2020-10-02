@@ -8,4 +8,5 @@ public interface RewardService {
     List<Reward> findAll();
     Reward findById(String id);
     void create(Reward reward);
+    void exchangeReward(String id);
 }

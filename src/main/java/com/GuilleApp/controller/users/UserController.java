@@ -1,4 +1,4 @@
-package com.GuilleApp.controller;
+package com.GuilleApp.controller.users;
 
 
 import com.GuilleApp.model.users.AppUser;

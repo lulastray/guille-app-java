@@ -45,6 +45,17 @@ public class AppUser implements Serializable {
 
     }
 
+    public AppUser (){
+    }
+
+    public AppUser(UUID id,String username, String password, List<Role> roles, Long points){
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.roles = roles;
+        this.points = points;
+    }
+
     public void setPoints(Long points) {
         this.points = points;
     }

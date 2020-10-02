@@ -1,6 +1,6 @@
 package com.GuilleApp.service.tasks;
 
-import com.GuilleApp.controller.ChangeProgressDTO;
+import com.GuilleApp.controller.tasks.ChangeProgressDTO;
 import com.GuilleApp.model.tasks.Task;
 
 import java.util.List;

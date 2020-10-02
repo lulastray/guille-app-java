@@ -1,4 +1,4 @@
-package com.GuilleApp.controller;
+package com.GuilleApp.controller.rewards;
 
 import com.GuilleApp.model.rewards.Reward;
 import com.GuilleApp.service.Rewards.RewardServiceImpl;
@@ -17,10 +17,11 @@ public class RewardController {
     @GetMapping("/all")
     public List<Reward> getAll(){ return rewardService.findAll();}
 
-
-
     @PostMapping("/new")
     public void create(@RequestBody Reward reward){
         rewardService.create(reward);
     }
+
+    @PutMapping("/exchange/{id}")
+    public void update(@PathVariable String id) { rewardService.exchangeReward(id);}
 }

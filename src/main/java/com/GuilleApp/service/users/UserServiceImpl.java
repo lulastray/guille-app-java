@@ -3,6 +3,7 @@ package com.GuilleApp.service.users;
 import com.GuilleApp.model.users.AppUser;
 import com.GuilleApp.repository.UserRepository;
 import com.GuilleApp.security.SecurityUtils;
+import com.GuilleApp.service.exceptions.NotEnoughPoints;
 import com.GuilleApp.service.exceptions.UserWithoutRoles;
 import com.GuilleApp.service.exceptions.UsernameNotFound;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,18 +55,23 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional
-    public void addPoints(Long taskPoints) {
+    public void addPoints(Long points) {
         AppUser userLogged = securityUtils.getLoggedInUser();
-        System.out.println("total points " + userLogged.getPoints() + taskPoints);
-        userLogged.setPoints(userLogged.getPoints() + taskPoints);
+        System.out.println("total points " + userLogged.getPoints() + points);
+        userLogged.setPoints(userLogged.getPoints() + points);
         userRepository.save(userLogged);
     }
 
     @Override
     @Transactional
-    public void substractPoints(Long taskPoints) {
+    public void substractPoints(Long points) {
         AppUser userLogged = securityUtils.getLoggedInUser();
-        userLogged.setPoints(userLogged.getPoints() - taskPoints);
-        userRepository.save(userLogged);
+        long totalPoints = userLogged.getPoints() - points;
+        if(totalPoints >= 0) {
+            userLogged.setPoints(totalPoints);
+            userRepository.save(userLogged);
+        }else{
+            throw new NotEnoughPoints();
+        }
     }
 }
